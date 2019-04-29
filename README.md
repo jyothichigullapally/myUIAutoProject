@@ -11,7 +11,6 @@ node_modules/protractor/bin/webdriver-manager update
 ```
 
 #run the sample test
-
 ```
 node_modules/protractor/bin/protractor conf/baseConf.js
 ```
