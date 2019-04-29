@@ -26,6 +26,19 @@ exports.config = {
         compiler: [],
         plugin: ["progress"]
     },
+    plugins: [{
+        package: require.resolve('protractor-multiple-cucumber-html-reporter-plugin'),
+        options: {
+            automaticallyGenerateReport: true,
+            removeExistingJsonReportFile: true,
+            removeOriginalJsonReportFile: true,
+            reportPath: '../reports',
+            reportName: 'e2e_test_suite Results',
+            pageTitle: 'e2e_test_suite Results',
+            displayDuration: true,
+            disableLog: true
+        }
+    }],
     params: {
         baseUrl:'https://www.google.com',
         browserName: 'chrome',
