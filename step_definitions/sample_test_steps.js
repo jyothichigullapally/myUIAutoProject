@@ -1,5 +1,6 @@
 const {Given, When, Then} = require('cucumber');
-
+const EC = protractor.ExpectedConditions;
+const WAIT_TIME = 15000;
 const {setDefaultTimeout} = require('cucumber');
 setDefaultTimeout(90 * 1000);
 
@@ -12,3 +13,8 @@ Given(/^user launches the application url under test$/, () =>
             )
         )
     );
+
+Then(/^verify the page loaded$/, () => {
+    console.log('*******verify the page loaded******');
+    return testHelperPO.isElementPresent(element(by.css("input.gLFyf.gsfi123")));
+});

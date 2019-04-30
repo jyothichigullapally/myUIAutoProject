@@ -1,15 +1,9 @@
 const path = require('path');
 const basePath = path.resolve(__dirname, '../Download');
 const fs = require('fs');
-
+// const HttpClient = require("protractor-http-client").HttpClient;
 exports.config = {
     directConnect: true,
-
-    // Capabilities to be passed to the webdriver instance.
-    capabilities: {
-        'browserName': 'chrome'
-    },
-
     framework: 'custom',
     frameworkPath: require.resolve('protractor-cucumber-framework'),
 
@@ -26,13 +20,33 @@ exports.config = {
         compiler: [],
         plugin: ["progress"]
     },
+    // Capabilities to be passed to the webdriver instance.
+    multiCapabilities: [
+        {
+            browserName: 'chrome',
+            count: 1,
+            shardTestFiles: false,
+
+            maxInstances: 1,
+            'chromeOptions': {
+                'args': ['--disable-web-security', '--ignore-autocomplete-off-autofill', 'disable-infobars'],
+                prefs: {
+                    'download': {
+                        'prompt_for_download': false,
+                        'directory_upgrade': true,
+                        'default_directory': basePath
+                    }
+                }
+            }
+        }
+    ],
     plugins: [{
         package: require.resolve('protractor-multiple-cucumber-html-reporter-plugin'),
         options: {
             automaticallyGenerateReport: true,
             removeExistingJsonReportFile: true,
             removeOriginalJsonReportFile: true,
-            reportPath: '../reports',
+            reportPath: './reports',
             reportName: 'e2e_test_suite Results',
             pageTitle: 'e2e_test_suite Results',
             displayDuration: true,
@@ -46,7 +60,7 @@ exports.config = {
     onPrepare: function () {
 
         const mkdirp = require('mkdirp');
-        const reportsPath = "./Reports/";
+        const reportsPath = "./reports/";
         mkdirp(reportsPath, function (err) {
             if (err) {
                 console.error(err);
@@ -64,6 +78,7 @@ exports.config = {
         expect = chai.expect;
         cucumber = require('cucumber');
 
+        testHelperPO = require('../common_utils/testHelperPo.js');
 
         browser.getProcessedConfig().then(data => {
             browser.params.browserName = data.capabilities.browserName;

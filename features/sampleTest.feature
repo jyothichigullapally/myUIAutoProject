@@ -3,3 +3,4 @@ Feature: sample test feature
 
   Scenario: Sample test Scenario
     Given user launches the application url under test
+    Then verify the page loaded
