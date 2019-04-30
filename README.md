@@ -1,20 +1,23 @@
-# Welcome to my UI automation project
-my UI automation project is using Protractor Cucumber framework to automate Web based application
+# Welcome to myUIAutoProject
+This is a sample UI automation project created using Protractor Cucumber framework for Web based applications
 
-## Project clone
-clone my project from [GIT] (https://github.com/jyothichigullapally/myUIAutoProject.git) repo
+## Clone Project
+git clone https://github.com/jyothichigullapally/myUIAutoProject.git
 
-### installations and Setup
+### Installations and Setup
 ```
 npm install
+```
+```
 node_modules/protractor/bin/webdriver-manager update
 ```
 
-#### run the sample test using the protractor
+#### command to run the sample test using the protractor
 ```
 node_modules/protractor/bin/protractor conf/baseConf.js
 ```
-#### run the sample test using the grunt
+
+#### command run the sample test using the grunt
 ```
 grunt test --conf=conf/baseconf.js --test-suite=testSuite
 ```
