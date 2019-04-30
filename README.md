@@ -10,11 +10,11 @@ npm install
 node_modules/protractor/bin/webdriver-manager update
 ```
 
-#run the sample test using the protractor
+# run the sample test using the protractor
 ```
 node_modules/protractor/bin/protractor conf/baseConf.js
 ```
-#run the sample test using the grunt
+# run the sample test using the grunt
 ```
 grunt test --conf=conf/baseconf.js --test-suite=testSuite
 ```
